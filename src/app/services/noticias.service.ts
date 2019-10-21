@@ -10,8 +10,7 @@ export class NoticiasService {
   constructor( private http: HttpClient ) { }
 
   getHeadLines() {
-    return this.http.get<RespuestaTopHeadlines>(`https://newsapi.org/v2/everything?q=bitcoin&from=2019-09-20
-    &sortBy=publishedAt&apiKey=8c0bdd7ba2fa4ae1b075792c11fa39fc
+    return this.http.get<RespuestaTopHeadlines>(`https://newsapi.org/v2/everything?q=bitcoin&from=2019-09-21&sortBy=publishedAt&apiKey=8c0bdd7ba2fa4ae1b075792c11fa39fc
     `);
   }
 }
