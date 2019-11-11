@@ -15,9 +15,9 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit() {
-    this.noticiasServices.getHeadLines()
+    this.noticiasServices.getTopHeadLines()
       .subscribe( resp => {
-        console.log('noticas', resp);
+        console.log('noticias', resp);
         this.noticias.push( ...resp.articles );
       });
   }
