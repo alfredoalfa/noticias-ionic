@@ -30,5 +30,4 @@ export class NoticiasService {
   getTopHeadLinesCategoria( categoria: string ) {
     return this.requestQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&category=${categoria}`);
   }
-  
 }
