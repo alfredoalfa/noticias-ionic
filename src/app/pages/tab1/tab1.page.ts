@@ -15,11 +15,28 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit() {
-    this.noticiasServices.getTopHeadLines()
-      .subscribe( resp => {
-        console.log('noticias', resp);
-        this.noticias.push( ...resp.articles );
-      });
+    this.loadNews();
   }
 
+  loadData(event) {
+
+    this.loadNews(event);
+  }
+
+  loadNews(event?) {
+    this.noticiasServices.getTopHeadLines()
+        .subscribe( resp => {
+          console.log('noticias', resp);
+
+          if (resp.articles.length === 0) {
+            event.target.disable = true;
+            event.target.complete();
+            return;
+          }
+          this.noticias.push( ...resp.articles );
+        });
+    if (event) {
+      event.target.complete();
+    }
+  }
 }
