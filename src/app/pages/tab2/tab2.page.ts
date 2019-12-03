@@ -24,16 +24,23 @@ export class Tab2Page implements OnInit {
   }
 
   changeCategory( event ) {
-    console.log(event.detail.value);
+    // console.log(event.detail.value);
     this.noticias = [];
     this.loadCategory( event.detail.value );
   }
 
-  loadCategory( category: string) {
+  loadCategory( category: string, event?) {
     this.noticiasServices.getTopHeadLinesCategoria( category )
         .subscribe(resp => {
-          console.log(resp);
           this.noticias.push(...resp.articles );
+
+          if (event) {
+            event.target.complete();
+          }
         });
+  }
+
+  loadData(event) {
+    this.loadCategory(event.detail.value, event);
   }
 }
