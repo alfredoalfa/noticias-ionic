@@ -8,7 +8,15 @@
 
 <ion-content color="dark">
 
-  <app-noticias [noticias]="dataLocalService.noticias">
+  <ion-slides  [options]="sliderOps"
+               *ngIf="dataLocalService.noticias.length===0">
+    <ion-slide>
+      <ion-label>No hay favoritos</ion-label>
+    </ion-slide>
+  </ion-slides>
+  <app-noticias *ngIf="dataLocalService.noticias.length>0"
+                [enFavoritos]="true"
+               [noticias]="dataLocalService.noticias">
 
   </app-noticias>
 </ion-content>
